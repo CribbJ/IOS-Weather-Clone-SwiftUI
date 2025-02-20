@@ -26,7 +26,7 @@ class HourlyForecast: Identifiable, Decodable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.id = UUID()
             self.time = try container.decode(String.self, forKey: .time)
-//            self.condition = try container.decode(WeatherCondition.self, forKey: .condition)
+
             let conditionString = try container.decode(String.self, forKey: .condition)
             self.condition = WeatherCondition(fromString: conditionString)
         
