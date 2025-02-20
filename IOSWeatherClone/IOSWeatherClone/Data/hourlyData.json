@@ -1,0 +1,16 @@
+[
+    {"time": "Now", "icon": "cloud.fill", "temperature": 4},
+    {"time": "18", "icon": "cloud.fill", "temperature": 4},
+    {"time": "19", "icon": "cloud.fill", "temperature": 3},
+    {"time": "20", "icon": "cloud.rain.fill", "temperature": 2},
+    {"time": "21", "icon": "cloud.rain.fill", "temperature": 1},
+    {"time": "22", "icon": "moon.fill", "temperature": 0},
+    {"time": "23", "icon": "moon.fill", "temperature": 1},
+    {"time": "00", "icon": "moon.fill", "temperature": 1},
+    {"time": "01", "icon": "cloud.fill", "temperature": 1},
+    {"time": "02", "icon": "cloud.fill", "temperature": 1},
+    {"time": "03", "icon": "cloud.fill", "temperature": 1},
+    {"time": "04", "icon": "cloud.fill", "temperature": 1},
+    {"time": "05", "icon": "cloud.fill", "temperature": 1},
+    {"time": "06", "icon": "sunrise.fill", "temperature": 1}
+]

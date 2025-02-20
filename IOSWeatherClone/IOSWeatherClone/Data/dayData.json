@@ -1,0 +1,66 @@
+[
+    {
+        "day": "Today",
+        "icon": "cloud.sun.fill",
+        "minTemp": -1,
+        "maxTemp": 7,
+        "slider": "Sunny"
+    },
+    {
+        "day": "Wed",
+        "icon": "cloud.fill",
+        "minTemp": 2,
+        "maxTemp": 10,
+        "slider": "Cloudy"
+    },
+    {
+        "day": "Thu",
+        "icon": "cloud.rain.fill",
+        "minTemp": 5,
+        "maxTemp": 12,
+        "slider": "Rainy"
+    },
+    {
+        "day": "Fri",
+        "icon": "cloud.moon.fill",
+        "minTemp": 4,
+        "maxTemp": 8,
+        "slider": "Partly Cloudy"
+    },
+    {
+        "day": "Sat",
+        "icon": "sun.max.fill",
+        "minTemp": 6,
+        "maxTemp": 12,
+        "slider": "Sunny"
+    },
+    {
+        "day": "Sun",
+        "icon": "cloud.sun.fill",
+        "minTemp": 5,
+        "maxTemp": 11,
+        "slider": "Partly Sunny"
+    },
+    {
+        "day": "Mon",
+        "icon": "cloud.fill",
+        "minTemp": 3,
+        "maxTemp": 9,
+        "slider": "Cloudy"
+    },
+    {
+        "day": "Tue",
+        "icon": "cloud.rain.fill",
+        "minTemp": 4,
+        "maxTemp": 7,
+        "slider": "Rainy"
+    },
+    {
+        "day": "Wed",
+        "icon": "cloud.bolt.fill",
+        "minTemp": 6,
+        "maxTemp": 10,
+        "slider": "Stormy"
+    }
+]
+

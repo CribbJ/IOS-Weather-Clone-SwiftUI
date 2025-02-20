@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		82FD5C6D2D66970400FFC2CA /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FD5C6C2D66970400FFC2CA /* JSONLoader.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		82D90A1C2D64FCD500FEA223 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		82D90A0B2D64FCD500FEA223 /* IOSWeatherClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSWeatherClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D90A1B2D64FCD500FEA223 /* IOSWeatherCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSWeatherCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D90A252D64FCD500FEA223 /* IOSWeatherCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSWeatherCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82FD5C6C2D66970400FFC2CA /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONLoader.swift; path = IOSWeatherClone/JSONLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		82D90A022D64FCD500FEA223 = {
 			isa = PBXGroup;
 			children = (
+				82FD5C6C2D66970400FFC2CA /* JSONLoader.swift */,
 				82D90A0D2D64FCD500FEA223 /* IOSWeatherClone */,
 				82D90A1E2D64FCD500FEA223 /* IOSWeatherCloneTests */,
 				82D90A282D64FCD500FEA223 /* IOSWeatherCloneUITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82FD5C6D2D66970400FFC2CA /* JSONLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

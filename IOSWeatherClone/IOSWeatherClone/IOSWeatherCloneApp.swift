@@ -13,5 +13,6 @@ struct IOSWeatherCloneApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: DailyForecast.self)
     }
 }

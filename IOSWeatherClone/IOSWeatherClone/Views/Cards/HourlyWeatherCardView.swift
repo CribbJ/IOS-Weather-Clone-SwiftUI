@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HourlyWeatherCardView: View {
     var description: String
-    var hourlyForecasts: [(hour: String, conditionImage: String, temperature: Int)]
+    var hourlyForecasts: [HourlyForecast]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -27,10 +27,10 @@ struct HourlyWeatherCardView: View {
             // Hourly Forecast - Scrollable
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 5) {   // adjust to fit 7 items
-                    ForEach(hourlyForecasts, id: \.hour) { forecast in
+                    ForEach(hourlyForecasts) { forecast in
                         HourView(
-                            hour: forecast.hour,
-                            conditionImage: forecast.conditionImage,
+                            hour: forecast.time,
+                            conditionImage: forecast.icon,
                             hourlyTemperature: forecast.temperature
                         )
                     }
@@ -74,26 +74,30 @@ struct HourView: View {
 }
 
 #Preview {
+    
+    let sampleDescription = """
+        Cloudy conditions tonight, continuing through the morning. The lowest Feels like temperature will be 0° around 23:00.
+    """
+    
+    let sampleForecast  = [
+        HourlyForecast(time: "Now", icon: "cloud.fill", temperature: 4),
+        HourlyForecast(time: "18", icon: "cloud.fill", temperature: 4),
+        HourlyForecast(time: "19", icon: "cloud.fill", temperature: 3),
+        HourlyForecast(time: "20", icon: "cloud.rain.fill", temperature: 2),
+        HourlyForecast(time: "21", icon: "cloud.rain.fill", temperature: 1),
+        HourlyForecast(time: "22", icon: "moon.fill", temperature: 0),
+        HourlyForecast(time: "23", icon: "moon.fill", temperature: 1),
+        HourlyForecast(time: "00", icon: "moon.fill", temperature: 1),
+        HourlyForecast(time: "01", icon: "cloud.fill", temperature: 1),
+        HourlyForecast(time: "02", icon: "cloud.fill", temperature: 1),
+        HourlyForecast(time: "03", icon: "cloud.fill", temperature: 1),
+        HourlyForecast(time: "04", icon: "cloud.fill", temperature: 1),
+        HourlyForecast(time: "05", icon: "cloud.fill", temperature: 1),
+        HourlyForecast(time: "06", icon: "sunrise.fill", temperature: 1)
+    ]
+    
     HourlyWeatherCardView(
-        description: """
-                Cloudy conditions tonight, continuing through the morning. The lowest Feels like temperature will be 0° around 23:00.
-                """,
-        hourlyForecasts: [
-            ("Now", "cloud.fill", 4),
-            ("18", "cloud.fill", 4),
-            ("19", "cloud.fill", 3),
-            ("20", "cloud.rain.fill", 2),
-            ("21", "cloud.rain.fill", 1),
-            ("22", "moon.fill", 0),
-            ("23", "moon.fill", 1),
-            ("00", "moon.fill", 1),
-            ("01", "cloud.fill", 1),
-            ("02", "cloud.fill", 1),
-            ("03", "cloud.fill", 1),
-            ("04", "cloud.fill", 1),
-            ("05", "cloud.fill", 1),
-            ("06", "sunrise.fill", 1),
-            
-        ]
+        description: sampleDescription, hourlyForecasts: sampleForecast
     )
+
 }
