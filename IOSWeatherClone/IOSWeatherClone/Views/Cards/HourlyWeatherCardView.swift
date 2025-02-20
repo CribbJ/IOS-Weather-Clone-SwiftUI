@@ -54,56 +54,32 @@ struct HourView: View {
     var hourlyTemperature: Int
     var body: some View {
         
-        let iconProfile = WeatherIconColorProfile.colorProfile(for: condition)
-
-        VStack(spacing: 8) {
-            Text(hour)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(Color.white)
-            
-            Image(systemName: condition.rawValue)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 25, height: 25)
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(iconProfile.foregroundColor, iconProfile.backgroundColor)
-            
-            Text("\(hourlyTemperature)°")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(Color.white)
+        if let iconProfile = WeatherCondition.colorProfile(for: condition) {
+            VStack(spacing: 8) {
+                Text(hour)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(Color.white)
+                
+                Image(systemName: condition.rawValue)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25, height: 25)
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(iconProfile.foregroundColor, iconProfile.backgroundColor)
+                
+                Text("\(hourlyTemperature)°")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(Color.white)
+            }
+            .frame(width: 50)
+        } else {
+            // Fallback if icon profile is not found (This should not happen)
+            Text("No Icon")
+                .foregroundColor(.white)
+                .frame(width: 50)
         }
-        .frame(width: 50)
     }
 }
-
-//struct HourlyWeatherCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let sampleDescription = """
-//            Cloudy conditions tonight, continuing through the morning. The lowest Feels like temperature will be 0° around 23:00.
-//        """
-//        
-//        let sampleForecast  = [
-//            HourlyForecast(time: "Now", condition: .cloudy, temperature: 4),
-//            HourlyForecast(time: "18", condition: .cloudy, temperature: 4),
-//            HourlyForecast(time: "19", condition: .cloudy, temperature: 3),
-//            HourlyForecast(time: "20", condition: .rainy, temperature: 2),
-//            HourlyForecast(time: "21", condition: .rainy, temperature: 1),
-//            HourlyForecast(time: "22", condition: .night, temperature: 0),
-//            HourlyForecast(time: "23", condition: .night, temperature: 1),
-//            HourlyForecast(time: "00", condition: .night, temperature: 1),
-//            HourlyForecast(time: "01", condition: .cloudy, temperature: 1),
-//            HourlyForecast(time: "02", condition: .cloudy, temperature: 1),
-//            HourlyForecast(time: "03", condition: .cloudy, temperature: 1),
-//            HourlyForecast(time: "04", condition: .cloudy, temperature: 1),
-//            HourlyForecast(time: "05", condition: .cloudy, temperature: 1),
-//            HourlyForecast(time: "06", condition: .cloudy, temperature: 1)
-//        ]
-//        
-//        HourlyWeatherCardView(
-//            description: sampleDescription, hourlyForecasts: sampleForecast
-//        )
-//    }
-//}
 
 
 #Preview {

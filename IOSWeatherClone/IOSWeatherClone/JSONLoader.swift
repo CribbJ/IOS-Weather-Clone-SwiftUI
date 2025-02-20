@@ -2,7 +2,7 @@
 //  JSONLoader.swift
 //  IOSWeatherClone
 //
-//  Created by James Cribb on 19/02/2025.
+//  Created by James Cribb on 20/02/2025.
 //
 
 import Foundation
@@ -24,4 +24,5 @@ struct JSONLoader {
         }
     }
 }
+
 
