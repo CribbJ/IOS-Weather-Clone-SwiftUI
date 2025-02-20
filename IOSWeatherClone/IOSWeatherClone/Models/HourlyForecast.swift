@@ -12,13 +12,13 @@ import SwiftUI
 class HourlyForecast: Identifiable, Decodable {
     var id: UUID
     var time: String
-    var icon: String
+    var condition: WeatherCondition
     var temperature: Int
     
-    init(id: UUID = UUID(), time: String, icon: String, temperature: Int) {
+    init(id: UUID = UUID(), time: String, condition: WeatherCondition, temperature: Int) {
         self.id = id
         self.time = time
-        self.icon = icon
+        self.condition = condition
         self.temperature = temperature
     }
     
@@ -26,13 +26,13 @@ class HourlyForecast: Identifiable, Decodable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.id = UUID()
             self.time = try container.decode(String.self, forKey: .time)
-            self.icon = try container.decode(String.self, forKey: .icon)
+            self.condition = try container.decode(WeatherCondition.self, forKey: .condition)
             self.temperature = try container.decode(Int.self, forKey: .temperature)
         }
     
     enum CodingKeys: String, CodingKey {
             case time
-            case icon
+            case condition
             case temperature
         }
         

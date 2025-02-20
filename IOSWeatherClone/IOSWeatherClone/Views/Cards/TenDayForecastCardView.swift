@@ -93,7 +93,6 @@ struct DayView: View {
 
 #Preview {
     let sampleImage = "calendar"
-    
     let sampleForecasts = [
         DailyForecast(day: "Today", icon: "cloud.sun.fill", minTemp: -1, maxTemp: 7, slider: "Sunny"),
         DailyForecast(day: "Wed", icon: "cloud.fill", minTemp: 2, maxTemp: 10, slider: "Cloudy"),
