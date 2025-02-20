@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
+    @State private var dailyForecasts: [DailyForecast] = []
+    @State private var hourlyForecasts: [HourlyForecast] = []
+    
     var body: some View {
         
-        // Background
         ZStack {
             
-            LinearGradient(gradient: Gradient(colors: [.blue, .white]),
-                           startPoint: .top,
-                           endPoint: .bottom)
-            .ignoresSafeArea()
+            LinearGradient(gradient: Gradient(colors: [.blue, .white]), startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
             
-//            VStack {
+            VStack {
                 
-                // Headline view
                 HeadlineWeatherView (
                     location: "Manchester",
                     nowTemperature: 4,
@@ -29,59 +30,40 @@ struct ContentView: View {
                     minTemperature: 2
                 )
                 
-                
                 ScrollView {
-                    
-                    // Hourly Forecast card
+                    // Hourly Weather
                     HourlyWeatherCardView(
                         description: """
                                 Cloudy conditions tonight, continuing through the morning. The lowest Feels like temperature will be 0° around 23:00.
                                 """,
-                        hourlyForecasts: [
-                            ("Now", "cloud.fill", 4),
-                            ("18", "cloud.fill", 4),
-                            ("19", "cloud.fill", 3),
-                            ("20", "cloud.rain.fill", 2),
-                            ("21", "cloud.rain.fill", 1),
-                            ("22", "moon.fill", 0),
-                            ("23", "moon.fill", 1),
-                            ("00", "moon.fill", 1),
-                            ("01", "cloud.fill", 1),
-                            ("02", "cloud.fill", 1),
-                            ("03", "cloud.fill", 1),
-                            ("04", "cloud.fill", 1),
-                            ("05", "cloud.fill", 1),
-                            ("06", "sunrise.fill", 1),
-                            
-                        ]
+                        hourlyForecasts: hourlyForecasts
                     )
                     
-                    // Daily Forecast card
-                    TenDayForecastCardView (
+                    // 10-day Forecast
+                    TenDayForecastCardView(
                         cardImage: "calendar",
-                        dailyForecasts: [
-                            ("Today", "cloud.sun.fill", -1, 7, "Sunny"),
-                            ("Wed", "cloud.fill", 2, 10, "Cloudy"),
-                            ("Thu", "cloud.rain.fill", 5, 12, "Rainy"),
-                            ("Fri", "cloud.moon.fill", 4, 8, "Partly Cloudy"),
-                            ("Fri", "cloud.moon.fill", 4, 8, "Partly Cloudy"),
-                            ("Sat", "sun.max.fill", 6, 12, "Sunny"),
-                            ("Sun", "cloud.sun.fill", 5, 11, "Partly Sunny"),
-                            ("Mon", "cloud.fill", 3, 9, "Cloudy"),
-                            ("Tue", "cloud.rain.fill", 4, 7, "Rainy"),
-                            ("Wed", "cloud.bolt.fill", 6, 10, "Stormy")
-                        ])
+                        dailyForecasts: dailyForecasts
+                    )
+                }
+                .padding(.top, 250)
+
+            }
+            .onAppear {
+                
+                // Load the daily forecast data
+                if let forecasts: [DailyForecast] = JSONLoader.load("dayData", as: [DailyForecast].self) {
+                    self.dailyForecasts = forecasts
+                }
+                
+                // Load the hourly forecast data
+                if let hourlyData: [HourlyForecast] = JSONLoader.load("hourlyData", as: [HourlyForecast].self) {
+                    self.hourlyForecasts = hourlyData
                 }
             }
         }
-        
-//        TabBarView()
-        
     }
-//}
-
-
-
+}
+                
 
 #Preview {
     ContentView()

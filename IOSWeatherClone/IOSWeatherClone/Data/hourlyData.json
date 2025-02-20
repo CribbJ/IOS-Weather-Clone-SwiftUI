@@ -1,0 +1,17 @@
+[
+    {"time": "Now", "condition": "sunny", "temperature": 4},
+    {"time": "18", "condition": "cloudy", "temperature": 4},
+    {"time": "19", "condition": "cloudy", "temperature": 3},
+    {"time": "20", "condition": "showers", "temperature": 2},
+    {"time": "21", "condition": "showers", "temperature": 1},
+    {"time": "22", "condition": "night", "temperature": 0},
+    {"time": "23", "condition": "night", "temperature": 1},
+    {"time": "00", "condition": "night", "temperature": 1},
+    {"time": "01", "condition": "cloudy", "temperature": 1},
+    {"time": "02", "condition": "cloudy", "temperature": 1},
+    {"time": "03", "condition": "cloudy", "temperature": 1},
+    {"time": "04", "condition": "cloudy", "temperature": 1},
+    {"time": "05", "condition": "cloudy", "temperature": 1},
+    {"time": "06", "condition": "sunny", "temperature": 1}
+]
+

@@ -6,16 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TenDayForecastCardView: View {
     var cardImage: String
-    var dailyForecasts: [(
-        day: String,
-        conditionImage: String,
-        minTemperature: Int,
-        maxTemperature: Int,
-        sliderInfo: String
-    )]
+    var dailyForecasts: [DailyForecast]
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -35,12 +31,13 @@ struct TenDayForecastCardView: View {
                 .background(Color.white)
             
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach(dailyForecasts, id: \.day) { forecast in
+                ForEach(dailyForecasts) { forecast in
                     DayView(
-                        conditionImage: forecast.conditionImage,
-                        minTemperature: forecast.minTemperature,
-                        maxTemperature: forecast.maxTemperature,
-                        sliderInfo: forecast.sliderInfo
+                        day: forecast.day,
+                        conditionImage: forecast.icon,
+                        minTemperature: forecast.minTemp,
+                        maxTemperature: forecast.maxTemp,
+                        sliderInfo: forecast.slider
                     )
                     Divider()
                         .background(Color.white)
@@ -70,7 +67,6 @@ struct DayView: View {
                 .foregroundColor(.white)
                 .frame(width: 50, alignment: .leading)
             
-            
             Image(systemName: conditionImage)
                 .resizable()
                 .scaledToFit()
@@ -96,18 +92,18 @@ struct DayView: View {
 
 
 #Preview {
-    TenDayForecastCardView(
-        cardImage: "calendar",
-        dailyForecasts: [
-            ("Today", "cloud.sun.fill", -1, 7, "Sunny"),
-            ("Wed", "cloud.fill", 2, 10, "Cloudy"),
-            ("Thu", "cloud.rain.fill", 5, 12, "Rainy"),
-            ("Fri", "cloud.moon.fill", 4, 8, "Partly Cloudy"),
-            ("Fri", "cloud.moon.fill", 4, 8, "Partly Cloudy"),
-            ("Sat", "sun.max.fill", 6, 12, "Sunny"),
-            ("Sun", "cloud.sun.fill", 5, 11, "Partly Sunny"),
-            ("Mon", "cloud.fill", 3, 9, "Cloudy"),
-            ("Tue", "cloud.rain.fill", 4, 7, "Rainy"),
-            ("Wed", "cloud.bolt.fill", 6, 10, "Stormy")
-    ])
+    let sampleImage = "calendar"
+    let sampleForecasts = [
+        DailyForecast(day: "Today", icon: "cloud.sun.fill", minTemp: -1, maxTemp: 7, slider: "Sunny"),
+        DailyForecast(day: "Wed", icon: "cloud.fill", minTemp: 2, maxTemp: 10, slider: "Cloudy"),
+        DailyForecast(day: "Thu", icon: "cloud.rain.fill", minTemp: 5, maxTemp: 12, slider: "Rainy"),
+        DailyForecast(day: "Fri", icon: "cloud.moon.fill", minTemp: 4, maxTemp: 8, slider: "Partly Cloudy"),
+        DailyForecast(day: "Sat", icon: "sun.max.fill", minTemp: 6, maxTemp: 12, slider: "Sunny"),
+        DailyForecast(day: "Sun", icon: "cloud.sun.fill", minTemp: 5, maxTemp: 11, slider: "Partly Sunny"),
+        DailyForecast(day: "Mon", icon: "cloud.fill", minTemp: 3, maxTemp: 9, slider: "Cloudy"),
+        DailyForecast(day: "Tue", icon: "cloud.rain.fill", minTemp: 4, maxTemp: 7, slider: "Rainy"),
+        DailyForecast(day: "Wed", icon: "cloud.bolt.fill", minTemp: 6, maxTemp: 10, slider: "Stormy")
+    ]
+    
+    TenDayForecastCardView(cardImage: sampleImage, dailyForecasts: sampleForecasts)
 }
